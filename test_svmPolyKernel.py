@@ -21,7 +21,7 @@ iris = datasets.load_iris()
 X = iris.data[:, :2]  # we only take the first two features
 Y = iris.target
 
-print "Training the SVMs..."
+print ("Training the SVMs...")
 
 C = 1.0  # value of C for the SVMs
 
@@ -33,8 +33,8 @@ myModel.fit(X, Y)
 model = svm.SVC(C = C, kernel='poly', degree=_polyDegree, coef0=1, gamma=1)
 model.fit(X, Y)
 
-print ""
-print "Testing the SVMs..."
+print ("")
+print ("Testing the SVMs...")
 
 h = .02  # step size in the mesh
 
@@ -55,14 +55,14 @@ predictions = predictions.reshape(xx.shape)
 # plot my results
 plt.subplot(1, 2, 1)
 plt.pcolormesh(xx, yy, myPredictions, cmap=plt.cm.Paired)
-plt.scatter(X[:, 0], X[:, 1], c=Y, cmap=plt.cm.Paired) # Plot the training points
+plt.scatter(X[:, 0], X[:, 1], c=Y, edgecolors='k', cmap=plt.cm.Paired) # Plot the training points
 plt.title("SVM with My Custom Polynomial Kernel (degree = "+str(_polyDegree) + ", C = "+str(C)+")")
 plt.axis('tight')
 
 # plot built-in results
 plt.subplot(1, 2, 2)
 plt.pcolormesh(xx, yy, predictions, cmap=plt.cm.Paired)
-plt.scatter(X[:, 0], X[:, 1], c=Y, cmap=plt.cm.Paired) # Plot the training points
+plt.scatter(X[:, 0], X[:, 1], c=Y, edgecolors='k', cmap=plt.cm.Paired) # Plot the training points
 plt.title('SVM with Equivalent Scikit_learn Poly Kernel for Comparison')
 plt.axis('tight')
 

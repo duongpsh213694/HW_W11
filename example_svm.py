@@ -23,15 +23,15 @@ X = allData[:,:-1]
 Y = allData[:,-1]
 
 
-C = 0.01
+C = 5
 
 # train the SVM
-print "Training the SVM"
+print ("Training the SVM")
 clf = svm.SVC(C=C,kernel='linear')
 clf.fit(X, Y)
 
-print ""
-print "Testing the SVM"
+print ("")
+print ("Testing the SVM")
 
 h = .02  # step size in the mesh
 
@@ -47,7 +47,7 @@ Z = Z.reshape(xx.shape)
 plt.pcolormesh(xx, yy, Z, cmap=plt.cm.Paired)
 
 # Plot also the training points
-plt.scatter(X[:, 0], X[:, 1], c=Y, cmap=plt.cm.Paired)
+plt.scatter(X[:, 0], X[:, 1], c=Y, edgecolors='k', cmap=plt.cm.Paired)
 plt.title('SVM decision surface with C = '+str(C))
 plt.axis('tight')
 plt.show()
